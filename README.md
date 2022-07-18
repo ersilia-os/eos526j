@@ -20,7 +20,7 @@ Genheden, S., Thakkar, A., Chadimová, V. et al. AiZynthFinder: a fast, robust a
 The GPL-v3 license applies to all parts of the repository that are not externally maintained libraries. This repository uses the externally maintained library "aizynthfinder", located at [/model](https://github.com/ersilia-os/eos526j/tree/main/model) and licensed under an [MIT license](https://github.com/ersilia-os/eos526j/blob/main/model/framework/aizynthfinder/LICENSE).
 
 # History 
-- Model was downloaded on 7/18/2022 from  
+- Model was downloaded on 7/18/2022 from https://github.com/MolecularAI/aizynthfinder
 - Imports were modified in scripts [aizynthfinder.py](https://github.com/ersilia-os/eos526j/blob/main/model/framework/aizynthfinder/aizynthfinder/aizynthfinder.py) and [logging.py](https://github.com/ersilia-os/eos526j/blob/main/model/framework/aizynthfinder/aizynthfinder/utils/logging.py) for eos compatibility
 - Model was incorporated into the Ersilia Model Hub on 7/18/22
 
