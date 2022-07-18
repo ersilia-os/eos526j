@@ -1,40 +1,59 @@
 # imports
 import os
 import csv
-import joblib
 import sys
-from rdkit import Chem
-from rdkit.Chem.Descriptors import MolWt
+import pandas as pd
+import numpy as np
+
+from pathlib import Path
+path_root = Path(__file__).parents[2]
+sys.path.append(str(path_root))
+from framework.aizynthfinder.aizynthfinder.aizynthfinder import AiZynthFinder
+
 
 # parse arguments
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-# current file directory
-root = os.path.dirname(os.path.abspath(__file__))
 
-# checkpoints directory
-checkpoints_dir = os.path.abspath(os.path.join(root, "..", "..", "checkpoints"))
+cwd = os.getcwd()
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+os.chdir("..")
 
-# read checkpoints (here, simply an integer number: 42)
-ckpt = joblib.load(os.path.join(checkpoints_dir, "checkpoints.joblib"))
-
-# model to be run (here, calculate the Molecular Weight and add ckpt (42) to it)
-def my_model(smiles_list, ckpt):
-    return [MolWt(Chem.MolFromSmiles(smi))+ckpt for smi in smiles_list]
+# configure AiZynthFinder object 
+filename = "aizynthfinder/config.yml"
+finder = AiZynthFinder(configfile=filename)
+finder.stock.select("zinc")
+finder.expansion_policy.select("uspto")
+os.chdir(cwd)
     
+
+def my_model(smiles_list):
+    output_df = pd.DataFrame(columns=["Synthesis Score"])
+    for smi in smiles_list:
+
+        # set target smiles and run tree search
+        finder.target_smiles = smi
+        finder.tree_search()
+        finder.build_routes()
+        stats = finder.extract_statistics()
+
+        # process model output
+        if stats['is_solved']:
+            output_df.loc[len(output_df.index)] = [stats['top_score']]
+        else:
+            output_df.loc[len(output_df.index)] = [np.NaN]
+
+    return output_df
+
 # read SMILES from .csv file, assuming one column with header
 with open(input_file, "r") as f:
     reader = csv.reader(f)
     next(reader) # skip header
     smiles_list = [r[0] for r in reader]
-    
-# run model
-outputs = my_model(smiles_list, ckpt)
 
-# write output in a .csv file
-with open(output_file, "w") as f:
-    writer = csv.writer(f)
-    writer.writerow(["value"]) # header
-    for o in outputs:
-        writer.writerow([o])
+# run model
+outputs = my_model(smiles_list)
+
+# write outputs to file (outputs is a pd dataframe)
+outputs.to_csv(output_file, index=False)

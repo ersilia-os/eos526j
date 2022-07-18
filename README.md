@@ -1,28 +1,28 @@
-# Model title
+# AiZynthFinder
 ## Model identifiers
-- Slug:
-- Ersilia ID: 
-- Tags: 
+- Slug: aizynthfinder
+- Ersilia ID: 526j
+- Tags: retrosynthesis, physchem, ML
 
 # Model description
-Short description of the model in one or two sentences.
-- Input:
-- Output: {unit and description of output) 
-- Model type: (Regression or Classification)
-- Training set: (number of compounds and link to the training data)
-- Mode of training: (is it pretrained? that is were the checkpoints downloaded and used to train the model? or is it retrained? that is trained from scratch with an updated data)
+A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. Utilizes a pretrained model from AiZynthFinder as well as USPTO template reactions and a Zync stock also provided by AiZynthFinder.
+- Input: SMILES
+- Output: Retrosynthesis score. For now, our adaptation of AiZynthFinder will only output the retrosynthesis score provided by the AiZynthFinder model. From the developers: "the score reflects the fraction of solved precursors and the number of reactions required to synthesize the target compound. The score for a solved compound is close to 1.0, whereas the score for an unsolved compound is typically less than 0.8" (Genheden et. al).
+- Model type: Generative (will produce a series of retrosynthesis steps when fully adapted to EOS)
+- Mode of training: Pretrained
 
 # Source code
-Cite the source publication.
-- Code: include link to the source code
-- Checkpoints: include the link to the checkpoints used if model is a pretrained model
+Genheden, S., Thakkar, A., Chadimová, V. et al. AiZynthFinder: a fast, robust and flexible open-source software for retrosynthetic planning. J Cheminform 12, 70 (2020). https://doi.org/10.1186/s13321-020-00472-1
+- Code: https://github.com/MolecularAI/aizynthfinder
+- Checkpoints: https://figshare.com/articles/dataset/AiZynthFinder_a_fast_robust_and_flexible_open-source_software_for_retrosynthetic_planning/12334577
 
 # License
-State the licences used which are GPL v3 license used by Ersilia and the license used by the source code, if any exists. Use [this guide]() on how to license new models to be incorporated into Ersilia's model hub 
+The GPL-v3 license applies to all parts of the repository that are not externally maintained libraries. This repository uses the externally maintained library "aizynthfinder", located at /model and licensed under an MIT license.
 
 # History 
-- State the date when the model was downloaded and incorporated into Ersilia.
-- List any essential steps/modifications to the original code
+- Model was downloaded on 7/18/2022 from  
+- Imports were modified in scripts ayzynthfinder.py and logging.py for eos compatibility
+- Model was incorporated into the Ersilia Model Hub on 7/18/22
 
 # About us
 The [Ersilia Open Source Initiative](https://ersilia.io) is a Non Profit Organization ([1192266](https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5170657/full-print)) with the mission is to equip labs, universities and clinics in LMIC with AI/ML tools for infectious disease research.
