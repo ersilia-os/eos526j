@@ -8,25 +8,28 @@ from bentoml.service import BentoServiceArtifact
 import pickle
 import os
 import shutil
-import collections
 import tempfile
 import subprocess
-import csv
+import json
+
 
 CHECKPOINTS_BASEDIR = "checkpoints"
 FRAMEWORK_BASEDIR = "framework"
+
 
 def load_model(framework_dir, checkpoints_dir):
     mdl = Model()
     mdl.load(framework_dir, checkpoints_dir)
     return mdl
 
+
 def Float(x):
     try:
         return float(x)
     except:
         return None
-    
+
+
 def String(x):
     x = str(x)
     if not x:
@@ -45,7 +48,7 @@ def String(x):
 class Model(object):
     def __init__(self):
         self.DATA_FILE = "_data.csv"
-        self.OUTPUT_FILE = "_output.csv"
+        self.OUTPUT_FILE = "_output.json"
         self.RUN_FILE = "_run.sh"
         self.LOG_FILE = "run.log"
 
@@ -59,22 +62,22 @@ class Model(object):
     def set_framework_dir(self, dest):
         self.framework_dir = os.path.abspath(dest)
 
-    def predict(self, smiles_list): # <-- EDIT: rename if model does not do predictions (e.g. it does calculations)
+    def calculate(
+        self, smiles_list
+    ):  # <-- EDIT: rename if model does not do predictions (e.g. it does calculations)
         tmp_folder = tempfile.mkdtemp(prefix="eos-")
         data_file = os.path.join(tmp_folder, self.DATA_FILE)
         output_file = os.path.join(tmp_folder, self.OUTPUT_FILE)
         log_file = os.path.join(tmp_folder, self.LOG_FILE)
         with open(data_file, "w") as f:
-            f.write("smiles"+os.linesep)
+            f.write("smiles" + os.linesep)
             for smiles in smiles_list:
-                f.write(smiles+os.linesep)
+                f.write(smiles + os.linesep)
         run_file = os.path.join(tmp_folder, self.RUN_FILE)
         with open(run_file, "w") as f:
             lines = [
-                "bash {0}/run_predict.sh {0} {1} {2}".format( # <-- EDIT: match method name (run_predict.sh, run_calculate.sh, etc.)
-                    self.framework_dir,
-                    data_file,
-                    output_file
+                "bash {0}/run_calculate.sh {0} {1} {2}".format(  # <-- EDIT: match method name (run_predict.sh, run_calculate.sh, etc.)
+                    self.framework_dir, data_file, output_file
                 )
             ]
             f.write(os.linesep.join(lines))
@@ -84,18 +87,9 @@ class Model(object):
                 cmd, stdout=fp, stderr=fp, shell=True, env=os.environ
             ).wait()
         with open(output_file, "r") as f:
-            reader = csv.reader(f)
-            h = next(reader)
-            R = []
-            for r in reader:
-                R += [{"outcome": [Float(x) for x in r]}] # <-- EDIT: Modify according to type of output (Float, String...)
-        meta = {
-            "outcome": h
-        }
-        result = {
-            "result": R,
-            "meta": meta
-        }
+            results = json.load(f)
+        meta = None
+        result = {"result": results, "meta": meta}
         shutil.rmtree(tmp_folder)
         return result
 
@@ -150,8 +144,10 @@ class Artifact(BentoServiceArtifact):
 @artifacts([Artifact("model")])
 class Service(BentoService):
     @api(input=JsonInput(), batch=True)
-    def predict(self, input: List[JsonSerializable]): # <-- EDIT: rename if necessary 
+    def calculate(self, input: List[JsonSerializable]):  # <-- EDIT: rename if necessary
         input = input[0]
         smiles_list = [inp["input"] for inp in input]
-        output = self.artifacts.model.predict(smiles_list) # <-- EDIT: rename if necessary
+        output = self.artifacts.model.calculate(
+            smiles_list
+        )  # <-- EDIT: rename if necessary
         return [output]
