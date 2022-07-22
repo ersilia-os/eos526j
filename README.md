@@ -7,8 +7,8 @@
 # Model description
 A tool for planning retrosynthesis of a target molecule. Utilizes a [pretrained model, template reactions, and reagent stock](https://figshare.com/articles/dataset/AiZynthFinder_a_fast_robust_and_flexible_open-source_software_for_retrosynthetic_planning/12334577) provided by AiZynthFinder.
 - Input: SMILES
-- Output: Retrosynthesis score. For now, our adaptation of AiZynthFinder will only output the retrosynthesis score provided by the AiZynthFinder model. From the developers: "the score reflects the fraction of solved precursors and the number of reactions required to synthesize the target compound. The score for a solved compound is close to 1.0, whereas the score for an unsolved compound is typically less than 0.8" (Genheden et. al).
-- Model type: Generative (will produce a series of retrosynthesis steps when fully adapted to EOS)
+- Output: JSON file. The output json contains a hierarchical retrosynthesis path, beginning with the target molecule and including each involved reaction and reactant as SMILES strings. This path represents the best route predicted by the aizynthfinder model, if such a route was found.
+- Model type: Generative
 - Mode of training: Pretrained
 
 # Source code
