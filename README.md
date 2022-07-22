@@ -7,7 +7,7 @@
 # Model description
 A tool for planning retrosynthesis of a target molecule. Utilizes a [pretrained model, template reactions, and reagent stock](https://figshare.com/articles/dataset/AiZynthFinder_a_fast_robust_and_flexible_open-source_software_for_retrosynthetic_planning/12334577) provided by AiZynthFinder.
 - Input: SMILES
-- Output: JSON file. The output json contains a hierarchical retrosynthesis path, beginning with the target molecule and including each involved reaction and reactant as a SMILES string. This output reflects the best route predicted by the aizynthfinder model. If no such route is found, an empty JSON is returned. For advanced users, please refer to the [AiZynthFinder](https://github.com/MolecularAI/aizynthfinder) repository if secondary routes or route metadata is desired. 
+- Output: JSON file. The output json contains a hierarchical retrosynthesis path, beginning with the target molecule and including each involved reaction and reactant as a SMILES string. This output reflects the best route predicted by the aizynthfinder model. If no such route is found, an empty JSON is returned. For advanced users, please refer to the [AiZynthFinder](https://github.com/MolecularAI/aizynthfinder) repository if secondary routes or route metadata are desired. 
 - Model type: Generative
 - Mode of training: Pretrained
 
