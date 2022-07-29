@@ -1,7 +1,7 @@
 # AiZynthFinder
 ## Model identifiers
 - Slug: aizynthfinder
-- Ersilia ID: 526j
+- Ersilia ID: eos526j
 - Tags: retrosynthesis, physchem, ML
 
 # Model description
