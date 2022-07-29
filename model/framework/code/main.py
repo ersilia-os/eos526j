@@ -3,29 +3,26 @@ import os
 import csv
 import json
 import sys
-import pandas as pd
-import numpy as np
 
-from pathlib import Path
-path_root = Path(__file__).parents[2]
-sys.path.append(str(path_root))
+# hide gpus
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+
+# point to the aizynthfinder paths
+path_root = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "..")
+sys.path.append(os.path.abspath(path_root))
+sys.path.append(os.path.join(path_root, "framework", "aizynthfinder"))
 from framework.aizynthfinder.aizynthfinder.aizynthfinder import AiZynthFinder
 
 # parse arguments
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-
-cwd = os.getcwd()
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-os.chdir("..")
-
 # configure AiZynthFinder object 
-filename = "aizynthfinder/config.yml"
+root = os.path.dirname(os.path.abspath(__file__))
+filename = os.path.join(root, "..", "aizynthfinder", "config.yml")
 finder = AiZynthFinder(configfile=filename)
 finder.stock.select("zinc")
-finder.expansion_policy.select("uspto")
-os.chdir(cwd)    
+finder.expansion_policy.select("uspto") 
 
 # recursively cover dictionary entries to eliminate unnecessary fields
 def simplify_dict(dictionary: dict, keys_to_keep: dict = ['type', 'smiles', 'children']) -> dict:
