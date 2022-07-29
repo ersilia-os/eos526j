@@ -17,12 +17,16 @@ from framework.aizynthfinder.aizynthfinder.aizynthfinder import AiZynthFinder
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
+cwd = os.getcwd()
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+os.chdir("..")
+
 # configure AiZynthFinder object 
-root = os.path.dirname(os.path.abspath(__file__))
-filename = os.path.join(root, "..", "aizynthfinder", "config.yml")
+filename = "aizynthfinder/config.yml"
 finder = AiZynthFinder(configfile=filename)
 finder.stock.select("zinc")
-finder.expansion_policy.select("uspto") 
+finder.expansion_policy.select("uspto")
+os.chdir(cwd)  
 
 # recursively cover dictionary entries to eliminate unnecessary fields
 def simplify_dict(dictionary: dict, keys_to_keep: dict = ['type', 'smiles', 'children']) -> dict:
