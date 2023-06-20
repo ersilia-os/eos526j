@@ -28,5 +28,10 @@
     "Publication": "https://jcheminf.biomedcentral.com/articles/10.1186/s13321-020-00472-1",
     "Source Code": "https://github.com/MolecularAI/aizynthfinder",
     "License": "MIT",
-    "Contributor": "svolk19-stanford "
+    "Contributor": "svolk19-stanford ",
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos526j.zip",
+    "DockerHub": "https://hub.docker.com/r/ersiliaos/eos526j",
+    "Docker Architecture": [
+        "AMD64"
+    ]
 }
