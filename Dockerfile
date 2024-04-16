@@ -7,7 +7,7 @@ RUN conda install -c anaconda jinja2=3.0.3
 RUN conda install tqdm=4.64.0
 RUN conda install pyyaml=6.0
 RUN conda install -c conda-forge scikit-learn=1.0.2
-RUN conda install -c conda-forge xorg-libxrender
+RUN conda install -c conda-forge xorg-libxrender xorg-libxtst
 
 RUN pip install rdkit==2023.3.1
 RUN pip install pandas==1.3.5
