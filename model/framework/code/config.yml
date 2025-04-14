@@ -1,8 +1,11 @@
-policy:
-  files:
-    uspto:
-      - data/full_uspto_03_05_19_rollout_policy.hdf5
-      - data/full_uspto_03_05_19_unique_templates.hdf5
+expansion:
+  uspto:
+    - data/uspto_model.onnx
+    - data/uspto_templates.csv.gz
+  ringbreaker:
+    - data/uspto_ringbreaker_model.onnx
+    - data/uspto_ringbreaker_templates.csv.gz
+filter:
+  uspto: data/uspto_filter_model.onnx
 stock:
-  files:
-    zinc: data/zinc_stock_17_04_20.hdf5
+  zinc: data/zinc_stock.hdf5

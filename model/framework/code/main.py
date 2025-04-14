@@ -8,10 +8,10 @@ import sys
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 # point to the aizynthfinder paths
-path_root = os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "..")
-sys.path.append(os.path.abspath(path_root))
-sys.path.append(os.path.join(path_root, "framework", "aizynthfinder"))
-from framework.aizynthfinder.aizynthfinder.aizynthfinder import AiZynthFinder
+root = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.abspath(root))
+sys.path.append(os.path.join(root, "..", "framework", "aizynthfinder"))
+from aizynthfinder.aizynthfinder import AiZynthFinder
 
 # parse arguments
 input_file = sys.argv[1]
@@ -22,7 +22,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 os.chdir("..")
 
 # configure AiZynthFinder object 
-filename = "aizynthfinder/config.yml"
+filename = os.path.join(root, "config.yml")
 finder = AiZynthFinder(configfile=filename)
 finder.stock.select("zinc")
 finder.expansion_policy.select("uspto")
@@ -43,21 +43,31 @@ def simplify_dict(dictionary: dict, keys_to_keep: dict = ['type', 'smiles', 'chi
 
 def my_model(smiles_list):
     json_outputs = []
+    results = []
     for smi in smiles_list:
-
         # set target smiles and run tree search
         finder.target_smiles = smi
         finder.tree_search()
         finder.build_routes()
         stats = finder.extract_statistics()
+        print(stats)
 
-        # process model output
+        # Keep reaction steps
         if stats['is_solved']:
             best_route = finder.routes[0]['reaction_tree'].to_dict()
             json_outputs.append(simplify_dict(best_route))
         else:
             json_outputs.append({}) # empty json object
-    return json_outputs
+        
+        # Keep stock information
+        if stats['is_solved']:
+            results.append({
+                "top_score": stats["top_score"],
+                "number_of_steps": stats["number_of_steps"],
+                "number_of_precursors": stats["number_of_precursors"],
+                "number_of_precursors_in_stock": stats["number_of_precursors_in_stock"]
+            })
+    return results,json_outputs
 
 # read SMILES from .csv file, assuming one column with header
 with open(input_file, "r") as f:
@@ -66,11 +76,14 @@ with open(input_file, "r") as f:
     smiles_list = [r[0] for r in reader]
 
 # run model
-outputs = my_model(smiles_list)
+results,_ = my_model(smiles_list)
 
-# write output in a .json file
-with open(output_file, "w") as f:
-    json.dump(outputs, f, indent=4)
+keys = results[0].keys()  # Get headers from first item
+
+with open(output_file, "w", newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=keys)
+    writer.writeheader()
+    writer.writerows(results)
 
 
 

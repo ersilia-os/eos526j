@@ -1,0 +1,5 @@
+name,type,direction,description
+top_score,float,high,Score of the best solved reaction (closer to one for better solved)
+number_of_steps,integer,low,Number of steps required for the synthesis
+number_of_precursors,integer,low,Number of precursors required for the synthesis
+number_of_precursors_in_stock,integer,high,Number of precursors in stock

@@ -1,0 +1,138 @@
+[
+    {
+        "type": "mol",
+        "smiles": "C#Cc1cccc2c1c(C(=O)c1ccc(Cn3c(C)nc4cnccc43)c(F)c1)cn2C(=O)N(C)C",
+        "children": [
+            {
+                "type": "reaction",
+                "smiles": "[C:1]([cH3:2])[n:4]([cH2:3])[cH2:5]>>Cl[C:1][cH3:2].[cH2:3][n:4][cH2:5]",
+                "children": [
+                    {
+                        "type": "mol",
+                        "smiles": "Cc1nc2cnccc2[nH]1"
+                    },
+                    {
+                        "type": "mol",
+                        "smiles": "C#Cc1cccc2c1c(C(=O)c1ccc(CCl)c(F)c1)cn2C(=O)N(C)C",
+                        "children": [
+                            {
+                                "type": "reaction",
+                                "smiles": "[C:1]#[CH:2]>>C[Si](C)(C)[C:1]#[CH:2]",
+                                "children": [
+                                    {
+                                        "type": "mol",
+                                        "smiles": "CN(C)C(=O)n1cc(C(=O)c2ccc(CCl)c(F)c2)c2c(C#C[Si](C)(C)C)cccc21",
+                                        "children": [
+                                            {
+                                                "type": "reaction",
+                                                "smiles": "[c:1]([cH2:2])([cH2:3])[C:9]#[C:8][Si:5]([CH3:4])([CH3:6])[CH3:7]>>Br[c:1]([cH2:2])[cH2:3].[CH3:4][Si:5]([CH3:6])([CH3:7])[C:8]#[C:9]",
+                                                "children": [
+                                                    {
+                                                        "type": "mol",
+                                                        "smiles": "C#C[Si](C)(C)C"
+                                                    },
+                                                    {
+                                                        "type": "mol",
+                                                        "smiles": "CN(C)C(=O)n1cc(C(=O)c2ccc(CCl)c(F)c2)c2c(Br)cccc21",
+                                                        "children": [
+                                                            {
+                                                                "type": "reaction",
+                                                                "smiles": "[C:1](=[O:2])([cH3:3])[c:6]1[cH:5]:[N:4]:[cH:8][cH:7]1>>Cl[C:1](=[O:2])[cH3:3].[N:4]1:[cH:5][c:6][cH:7][cH:8]:1",
+                                                                "children": [
+                                                                    {
+                                                                        "type": "mol",
+                                                                        "smiles": "O=C(Cl)c1ccc(CCl)c(F)c1",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "reaction",
+                                                                                "smiles": "[Cl:1][C:2](=[O:3])[cH3:4]>>O=C(Cl)C(=O)[Cl:1].O[C:2](=[O:3])[cH3:4]",
+                                                                                "children": [
+                                                                                    {
+                                                                                        "type": "mol",
+                                                                                        "smiles": "O=C(Cl)C(=O)Cl"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "mol",
+                                                                                        "smiles": "O=C(O)c1ccc(CCl)c(F)c1"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "mol",
+                                                                        "smiles": "CN(C)C(=O)n1ccc2c(Br)cccc21",
+                                                                        "children": [
+                                                                            {
+                                                                                "type": "reaction",
+                                                                                "smiles": "[C:1]([NH2:2])(=[O:3])[n:5]([cH2:4])[cH2:6]>>Cl[C:1]([NH2:2])=[O:3].[cH2:4][n:5][cH2:6]",
+                                                                                "children": [
+                                                                                    {
+                                                                                        "type": "mol",
+                                                                                        "smiles": "CN(C)C(=O)Cl"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "mol",
+                                                                                        "smiles": "Brc1cccc2[nH]ccc12"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "mol",
+        "smiles": "CCCCCCOCCCCC",
+        "children": [
+            {
+                "type": "reaction",
+                "smiles": "[C:1]([CH3:2])[O:4][CH3:3]>>Br[C:1][CH3:2].[CH3:3][O:4]",
+                "children": [
+                    {
+                        "type": "mol",
+                        "smiles": "CCCCCO"
+                    },
+                    {
+                        "type": "mol",
+                        "smiles": "CCCCCCBr"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "mol",
+        "smiles": "N#C/C(=C\\c1ccc(O)c(O)c1)C(=O)Nc1ccccc1",
+        "children": [
+            {
+                "type": "reaction",
+                "smiles": "[C:1](=[O:2])([CH:3]=[CH2:4])[N:5][cH3:6]>>O[C:1](=[O:2])[CH:3]=[CH2:4].[N:5][cH3:6]",
+                "children": [
+                    {
+                        "type": "mol",
+                        "smiles": "Nc1ccccc1"
+                    },
+                    {
+                        "type": "mol",
+                        "smiles": "N#C/C(=C\\c1ccc(O)c(O)c1)C(=O)O"
+                    }
+                ]
+            }
+        ]
+    }
+]
