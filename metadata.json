@@ -3,22 +3,19 @@
     "Slug": "aizynthfinder",
     "Status": "Ready",
     "Title": "Retrosynthesis planning",
-    "Description": "A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. The algorithm breaks down the input molecule into purchasable blocks until it has been completely solved.\n",
+    "Description": "A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. The algorithm breaks down the input molecule into purchasable blocks until it has been completely solved.",
+    "Deployment": [
+        "Local"
+    ],
     "Source": "Local",
     "Source Type": "External",
+    "Task": "Representation",
+    "Subtask": "Featurization",
     "Input": [
         "Compound"
     ],
-    "Input Shape": "Single",
     "Input Dimension": 1,
-    "Task": "Representation",
-    "Subtask": "Featurization",
-    "Biomedical Area": [
-        "Any"
-    ],
-    "Target Organism": [
-        "Not Applicable"
-    ],
+    "Input Shape": "Single",
     "Output": [
         "Score"
     ],
@@ -29,19 +26,22 @@
         "Synthetic accessibility",
         "Chemical synthesis"
     ],
-    "Publication": "https://jcheminf.biomedcentral.com/articles/10.1186/s13321-020-00472-1",
+    "Biomedical Area": [
+        "Any"
+    ],
+    "Target Organism": [
+        "Not Applicable"
+    ],
     "Publication Type": "Peer reviewed",
     "Publication Year": 2020,
+    "Publication": "https://jcheminf.biomedcentral.com/articles/10.1186/s13321-020-00472-1",
     "Source Code": "https://github.com/MolecularAI/aizynthfinder",
     "License": "MIT",
     "Contributor": "svolk19-stanford ",
-    "Incorporation Date": "2022-07-19",
+    "Incorporation Date": "2022-07-18",
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos526j.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos526j",
     "Docker Architecture": [
         "AMD64"
-    ],
-    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos526j.zip",
-    "Deployment": [
-        "Local"
     ]
 }
