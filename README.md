@@ -2,7 +2,7 @@
 
 A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. The algorithm breaks down the input molecule into purchasable blocks until it has been completely solved.
 
-This model was incorporated on 2022-07-19.
+This model was incorporated on 2022-07-18.
 
 ## Information
 ### Identifiers
@@ -42,6 +42,8 @@ Below are the **Output Columns** of the model:
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos526j.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos526j.zip)
 
 ### Resource Consumption
+- **Model Size (Mb):** `1508`
+- **Environment Size (Mb):** `1296`
 
 
 ### References
