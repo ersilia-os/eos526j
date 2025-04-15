@@ -10,8 +10,9 @@ os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 # point to the aizynthfinder paths
 root = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(root))
-sys.path.append(os.path.join(root, "..", "framework", "aizynthfinder"))
-from aizynthfinder.aizynthfinder import AiZynthFinder
+framework_root = os.path.abspath(os.path.join(root, ".."))  # .../framework
+sys.path.insert(0, framework_root)
+from aizynthfinder import AiZynthFinder
 
 # parse arguments
 input_file = sys.argv[1]
