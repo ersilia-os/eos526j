@@ -6,7 +6,7 @@ on:
 jobs:
   call-mock:
     uses: ersilia-os/ersilia-model-workflows/.github/workflows/mock.yml@main
-    id: mock
+    runs-on: ubuntu-latest
 
   print-output:
     needs: call-mock
