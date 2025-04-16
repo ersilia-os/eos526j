@@ -1,0 +1,17 @@
+name: Mock
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-mock:
+    uses: ersilia-os/ersilia-model-workflows/.github/workflows/mock.yml@main
+    id: mock
+
+  print-output:
+    needs: call-mock
+    if: ${{ needs.call-mock.outputs.job-three-success == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success! Do something.
+        run: echo "Job three succeeded 🎉"
