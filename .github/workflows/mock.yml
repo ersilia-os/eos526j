@@ -9,7 +9,7 @@ jobs:
 
   print-output:
     needs: call-mock
-    if: ${{ needs.call-mock.outputs.job-three-success == 'true' }}
+    if: needs.call-mock.outputs.job-three-success == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Success! Do something.
