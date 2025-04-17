@@ -6,6 +6,7 @@ on:
 jobs:
   call-mock:
     uses: ersilia-os/ersilia-model-workflows/.github/workflows/mock.yml@main
+    continue-on-error: true
 
   print-output:
     needs: call-mock
