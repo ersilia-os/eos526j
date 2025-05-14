@@ -44,7 +44,12 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `788`
 - **Environment Size (Mb):** `1428`
+- **Image Size (Mb):** `3443.54`
 
+**Computational Performance (seconds):**
+- 10 inputs: `101.03`
+- 100 inputs: `-1`
+- 10000 inputs: `-1`
 
 ### References
 - **Source Code**: [https://github.com/MolecularAI/aizynthfinder](https://github.com/MolecularAI/aizynthfinder)
