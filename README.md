@@ -4,6 +4,7 @@ A tool for planning retrosynthesis of a target molecule based on template reacti
 
 This model was incorporated on 2022-07-18.
 
+
 ## Information
 ### Identifiers
 - **Ersilia Identifier:** `eos526j`
@@ -13,7 +14,7 @@ This model was incorporated on 2022-07-18.
 - **Task:** `Representation`
 - **Subtask:** `Featurization`
 - **Biomedical Area:** `Any`
-- **Target Organism:** `Not Applicable`
+- **Target Organism:** `Any`
 - **Tags:** `Synthetic accessibility`, `Chemical synthesis`
 
 ### Input
