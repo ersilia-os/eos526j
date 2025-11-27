@@ -51,7 +51,7 @@ def my_model(smiles_list):
         finder.tree_search()
         finder.build_routes()
         stats = finder.extract_statistics()
-        print(stats)
+
 
         # Keep reaction steps
         if stats['is_solved']:
@@ -59,7 +59,7 @@ def my_model(smiles_list):
             json_outputs.append(simplify_dict(best_route))
         else:
             json_outputs.append({}) # empty json object
-        
+ 
         # Keep stock information
         if stats['is_solved']:
             results.append({
@@ -68,6 +68,14 @@ def my_model(smiles_list):
                 "number_of_precursors": stats["number_of_precursors"],
                 "number_of_precursors_in_stock": stats["number_of_precursors_in_stock"]
             })
+        else:
+            results.append({
+                "top_score": None,
+                "number_of_steps": None,
+                "number_of_precursors": None,
+                "number_of_precursors_in_stock": None
+            })
+
     return results,json_outputs
 
 # read SMILES from .csv file, assuming one column with header
