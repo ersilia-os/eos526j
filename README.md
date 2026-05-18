@@ -53,7 +53,7 @@ Below are the **Output Columns** of the model:
 
 ### References
 - **Source Code**: [https://github.com/MolecularAI/aizynthfinder](https://github.com/MolecularAI/aizynthfinder)
-- **Publication**: [https://jcheminf.biomedcentral.com/articles/10.1186/s13321-020-00472-1](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-020-00472-1)
+- **Publication**: [https://doi.org/10.1186/s13321-020-00472-1](https://doi.org/10.1186/s13321-020-00472-1)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2020`
 - **Ersilia Contributor:** [svolk19-stanford ](https://github.com/svolk19-stanford )
