@@ -1,6 +1,6 @@
 # Retrosynthesis planning
 
-Attempts to plan a synthesis for a target molecule and reports whether a route was found, how many steps it needs, how many precursors it calls for and how many of those are purchasable. AiZynthFinder, from Genheden and colleagues at AstraZeneca, searches backwards using a Monte Carlo tree search guided by reaction templates extracted from reaction databases. A solved route reflects what the template library and stock list permit, so failure indicates the search could not find a path rather than that none exists.
+A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. The algorithm breaks down the input molecule into purchasable blocks until it has been completely solved.
 
 This model was incorporated on 2022-07-18.Last packaged on 2025-12-01.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2022-07-18.Last packaged on 2025-12-01.
 ### Output
 - **Output Dimension:** `4`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Retrosynthesis outcome giving route score, step count, and number of precursors including those in stock.
+- **Interpretation:** The fraction of solved precursors and the number of reactions required for synthesis. Close to 1.0 for a solved compound, less than 0.8 for unsolved.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |

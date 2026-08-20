@@ -3,7 +3,7 @@
     "Slug": "aizynthfinder",
     "Status": "Ready",
     "Title": "Retrosynthesis planning",
-    "Description": "Attempts to plan a synthesis for a target molecule and reports whether a route was found, how many steps it needs, how many precursors it calls for and how many of those are purchasable. AiZynthFinder, from Genheden and colleagues at AstraZeneca, searches backwards using a Monte Carlo tree search guided by reaction templates extracted from reaction databases. A solved route reflects what the template library and stock list permit, so failure indicates the search could not find a path rather than that none exists.",
+    "Description": "A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. The algorithm breaks down the input molecule into purchasable blocks until it has been completely solved.",
     "Deployment": [
         "Local"
     ],
@@ -20,7 +20,7 @@
     ],
     "Output Dimension": 4,
     "Output Consistency": "Fixed",
-    "Interpretation": "Retrosynthesis outcome giving route score, step count, and number of precursors including those in stock.",
+    "Interpretation": "The fraction of solved precursors and the number of reactions required for synthesis. Close to 1.0 for a solved compound, less than 0.8 for unsolved.",
     "Tag": [
         "Synthetic accessibility",
         "Chemical synthesis"
