@@ -3,7 +3,7 @@
     "Slug": "aizynthfinder",
     "Status": "Ready",
     "Title": "Retrosynthesis planning",
-    "Description": "A tool for planning retrosynthesis of a target molecule based on template reactions and a stock of precursors. The algorithm breaks down the input molecule into purchasable blocks until it has been completely solved.",
+    "Description": "Attempts to plan a synthesis for a target molecule and reports whether a route was found, how many steps it needs, how many precursors it calls for and how many of those are purchasable. AiZynthFinder, from Genheden and colleagues at AstraZeneca, runs a Monte Carlo tree search guided by a neural network policy over reaction templates learned from US patent reactions, stopping once precursors appear in a ZINC building-block stock. The authors caution that the route score was built to steer the search rather than to judge route quality, and targets left unsolved return empty values.",
     "Deployment": [
         "Local"
     ],
@@ -20,7 +20,7 @@
     ],
     "Output Dimension": 4,
     "Output Consistency": "Fixed",
-    "Interpretation": "The fraction of solved precursors and the number of reactions required for synthesis. Close to 1.0 for a solved compound, less than 0.8 for unsolved.",
+    "Interpretation": "Best route score approaching one when solved, with counts of reaction steps, precursors and purchasable precursors.",
     "Tag": [
         "Synthetic accessibility",
         "Chemical synthesis"
