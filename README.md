@@ -2,7 +2,8 @@
 
 Attempts to plan a synthesis for a target molecule and reports whether a route was found, how many steps it needs, how many precursors it calls for and how many of those are purchasable. AiZynthFinder, from Genheden and colleagues at AstraZeneca, runs a Monte Carlo tree search guided by a neural network policy over reaction templates learned from US patent reactions, stopping once precursors appear in a ZINC building-block stock. The authors caution that the route score was built to steer the search rather than to judge route quality, and targets left unsolved return empty values.
 
-This model was incorporated on 2022-07-18.Last packaged on 2025-12-01.
+This model was incorporated on 2022-07-18.
+Last packaged on 2025-12-01.
 
 ## Information
 ### Identifiers
@@ -29,8 +30,8 @@ Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
 |------|------|-----------|-------------|
 | top_score | float | high | Score of the best solved reaction (closer to one for better solved) |
-| number_of_steps | integer | low | Number of steps required for the synthesis |
-| number_of_precursors | integer | low | Number of precursors required for the synthesis |
+| number_of_steps | integer | high | Number of steps required for the synthesis |
+| number_of_precursors | integer | high | Number of precursors required for the synthesis |
 | number_of_precursors_in_stock | integer | high | Number of precursors in stock |
 
 
