@@ -15,7 +15,7 @@ RUN pip install rdchiral==1.1.0
 RUN pip install rdkit==2023.9.6
 RUN pip install tables==3.10.1
 RUN pip install tqdm==4.67.1
-RUN pip install onnxruntime==1.16.3
+RUN pip install onnxruntime==1.17.3
 RUN pip install matplotlib==3.10.1
 RUN pip install paretoset==1.2.4
 RUN pip install seaborn==0.13.2
