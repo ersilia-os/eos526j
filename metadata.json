@@ -39,7 +39,7 @@
     "Contributor": "svolk19-stanford ",
     "Incorporation Date": "2022-07-18",
     "Last Packaging Date": "2026-11-16",
-    "Release": "v1.0.1",
+    "Release": "v1.1.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos526j.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos526j",
     "Docker Architecture": [
